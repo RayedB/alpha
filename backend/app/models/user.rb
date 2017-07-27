@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
          :validatable,
          :omniauthable
   include DeviseTokenAuth::Concerns::User
+
+  has_many :lists, foreign_key: :created_by
 end

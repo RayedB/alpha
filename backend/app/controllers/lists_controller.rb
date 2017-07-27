@@ -1,15 +1,16 @@
 class ListsController < ApplicationController
   before_action :set_todo, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /lists
   def index
-    @lists = List.all
+    @lists = current_user.lists
     json_response(@lists)
   end
 
   # POST /lists
   def create
-    @list = List.create!(list_params)
+    @list = current_user.list.create!(list_params)
     json_response(@list, :created)
   end
 
@@ -34,7 +35,7 @@ class ListsController < ApplicationController
 
   def list_params
     # whitelist params
-    params.permit(:title, :created_by)
+    params.permit(:title)
   end
 
   def set_todo

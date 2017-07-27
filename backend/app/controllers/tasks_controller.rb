@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_list
   before_action :set_list_task, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
 
  # GET /todos/:todo_id/tasks
  def index
