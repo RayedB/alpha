@@ -13,7 +13,7 @@ export class WorkspaceComponent implements OnInit {
   list = {title: ''}
   listCreationForm:boolean;
   constructor(private service: ListService) {
-    this.listCreationForm = false
+    this.listCreationForm = false;
    }
 
   ngOnInit() {

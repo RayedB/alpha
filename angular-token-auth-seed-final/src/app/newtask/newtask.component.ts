@@ -12,4 +12,8 @@ export class NewtaskComponent implements OnInit {
   ngOnInit() {
   }
 
+  createTask(params){
+    
+  }
+
 }
