@@ -9,25 +9,44 @@ import { ListService } from '../services/list.service';
 })
 export class WorkspaceComponent implements OnInit {
   lists
-  tasks
-  constructor(private service: ListService) { }
+  tasks = []
+  list = {title: ''}
+  listCreationForm:boolean;
+  constructor(private service: ListService) {
+    this.listCreationForm = false
+   }
 
   ngOnInit() {
+    //Get todo lists
     this.service.getLists()
       .subscribe(data => {
-        this.lists = data;
-        for (let list of this.lists) {
-          console.log(list.id);
+        this.lists = data; // Save lists in variable
+        for (let list of this.lists) { // loop through array to get tasks for each list
           this.service.getTasks(list.id).subscribe(data => {
-            this.tasks = data;
+            for (let d of data){
+              this.tasks.push(d);
+            } // Save tasks in variable
             console.log(this.tasks);
           });
         }
       });
-
   }
 
+  newList() {
+    this.listCreationForm = true;
+    console.log("newlist")
+  }
 
+  deleteList(listId){
+    this.service.deleteList(listId);
+    this.lists.splice(listId,1)
+  }
+
+  processForm(){
+    this.listCreationForm = false;
+    this.service.createList(this.list)
+    this.lists.push(this.list);
+  }
 
 
 }

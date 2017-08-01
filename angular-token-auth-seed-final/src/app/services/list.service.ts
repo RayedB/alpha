@@ -6,12 +6,14 @@ import { Angular2TokenService } from "angular2-token";
 @Injectable()
 export class ListService {
 
-  private listsUrl: string = '/lists';
+  private listsUrl: string = 'lists';
   private tasksUrl: string = '/tasks';
   public headers = new Headers();
 
 
-  constructor(private http: Http, private _tokenService: Angular2TokenService) {}
+  constructor(private http: Http, private _tokenService: Angular2TokenService) {
+
+  }
 
   //Get all lists
   getLists(){
@@ -29,16 +31,17 @@ export class ListService {
 
   }
   //Create list
-  createlist(params){
-
+  createList(params){
+    return this._tokenService.post(this.listsUrl, params)
+      .map(res => res.json())
   }
   //update lists
   updatelist(param){
     // mandatory comment ?
   }
-  //Cancel list
-  cancellist(param){
-    //switch list's score to 0 and mark as done with mandatory comment of why it has been canceled
+  //Delete list
+  deleteList(param){
+    return this._tokenService.delete(this.listsUrl+'/'+param)
   }
 
 }

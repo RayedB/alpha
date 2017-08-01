@@ -18,6 +18,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WorkspaceComponent } from './workspace/workspace.component';
+import { NewtaskComponent } from './newtask/newtask.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { WorkspaceComponent } from './workspace/workspace.component';
     LoginFormComponent,
     RegisterFormComponent,
     ProfileComponent,
-    WorkspaceComponent
+    WorkspaceComponent,
+    NewtaskComponent
   ],
   imports: [
     BrowserModule,

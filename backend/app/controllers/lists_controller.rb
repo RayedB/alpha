@@ -10,7 +10,7 @@ class ListsController < ApplicationController
 
   # POST /lists
   def create
-    @list = current_user.list.create!(list_params)
+    @list = current_user.lists.create!(list_params)
     json_response(@list, :created)
   end
 
