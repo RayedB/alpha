@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { Angular2TokenService } from "angular2-token";
 
 @Injectable()
 export class TaskService {
 
-  constructor(private http: Http) {}
+  constructor(private _tokenService: Angular2TokenService) {}
 
   //Get all tasks
   getTasks(){
@@ -15,8 +16,9 @@ export class TaskService {
 
   }
   //Create task
-  createTask(params){
-
+  createTask(params,list_id){
+    return this._tokenService.post("lists/"+list_id+"/tasks",params)
+      .map(res => res.json())
   }
   //update tasks
   updateTask(param){

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../services/task.service';
 import { ListService } from '../services/list.service';
 
 @Component({
@@ -49,9 +48,10 @@ export class WorkspaceComponent implements OnInit {
     this.lists.push(this.list);
   }
 
-  newTask(){
-    this.taskCreationForm = true;
+  toggleNewTask(){
+    this.taskCreationForm = !this.taskCreationForm;
   }
+
 
 
 }
