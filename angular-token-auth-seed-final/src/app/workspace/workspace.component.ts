@@ -12,6 +12,7 @@ export class WorkspaceComponent implements OnInit {
   tasks = []
   list = {title: ''}
   listCreationForm:boolean;
+  taskCreationForm:boolean;
   constructor(private service: ListService) {
     this.listCreationForm = false;
    }
@@ -46,6 +47,10 @@ export class WorkspaceComponent implements OnInit {
     this.listCreationForm = false;
     this.service.createList(this.list)
     this.lists.push(this.list);
+  }
+
+  newTask(){
+    this.taskCreationForm = true;
   }
 
 

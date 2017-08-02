@@ -1,3 +1,54 @@
-<p>
-  newtask works!
-</p>
+<div class="row">
+  <form (ngSubmit)="submitNewTask()">
+    <div class="input-field col s4">
+      <input id="title" type="text" name="title" class="validate" [(ngModel)]="task.title">
+      <label for="title">Task</label>
+    </div>
+    <div class="input-field col s4">
+      <input type="text" id="duedate" name="due_date" class="datepicker" materialize="pickadate" [(ngModel)]="task.due_date">
+      <label for="duedate">Due date</label>
+    </div>
+    <div class="input-field col s4">
+      <select materialize="material_select" name="list_id" [(ngModel)]="list_id">
+        <option value="" disabled selected>Affect to list</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </div>
+    <div class="input-field col s4">
+      <select materialize="material_select" name="importance" [(ngModel)]="task.importance">
+        <option value="" disabled selected>Importance</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <div class="input-field col s4">
+      <select materialize="material_select" name="urgency" [(ngModel)]="task.urgency">
+        <option value="" disabled selected>Urgency</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <div class="input-field col s4">
+      <input id="est_time_completion" type="text" class="validate" placeholder="in hours" name="est_time_completion" [(ngModel)]="task.est_time_completion">
+      <label for="est_time_completion">Est.Time to completion</label>
+    </div>
+    <button type="submit" class="waves-effect waves-light btn pull-right blue">Add Task</button>
+  </form>
+</div>
